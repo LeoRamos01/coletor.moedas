@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas;
+package me.lramos.consumer.moedas.consumers;
 
 import java.util.List;
 

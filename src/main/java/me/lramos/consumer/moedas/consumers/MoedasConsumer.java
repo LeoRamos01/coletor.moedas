@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas;
+package me.lramos.consumer.moedas.consumers;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class MoedasConsumer extends AbstractConsumer {
 
 	private static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL";
 
-	public void consume() {
+	public List<MoedaDTO> consume() {
 
 		final HttpHeaders headers = new HttpHeaders();
 		headers.set("User-Agent", "eltabo");
@@ -28,7 +28,36 @@ public class MoedasConsumer extends AbstractConsumer {
 		List<MoedaDTO> moedas = this.exchangeAsList(URL, new ParameterizedTypeReference<List<MoedaDTO>>() {
 		}, entity);
 
-		moedas.forEach(System.out::println);
+		replicar(moedas);
+
+		return moedas;
+
+	}
+
+	/**
+	 * 
+	 * A primeira moeda recebida tem os seguintes campos que as demais não tem:
+	 * 
+	 * <li>code</li>
+	 * <li>codein</li>
+	 * <li>name</li>
+	 * <li>create_date</li>
+	 * 
+	 * Para corrigir isso pego a primeira e copio para as demais.
+	 * 
+	 * @param moedas
+	 */
+	private void replicar(List<MoedaDTO> moedas) {
+		MoedaDTO first = moedas.remove(0);
+
+		moedas.forEach(m -> {
+
+			m.setCode(first.getCode());
+			m.setCodein(first.getCodein());
+			m.setName(first.getName());
+			m.setCreate_date(first.getCreate_date());
+			
+		});
 
 	}
 

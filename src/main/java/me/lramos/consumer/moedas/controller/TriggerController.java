@@ -1,10 +1,13 @@
 package me.lramos.consumer.moedas.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.lramos.consumer.moedas.MoedasConsumer;
+import me.lramos.consumer.moedas.consumers.MoedasConsumer;
+import me.lramos.consumer.moedas.dto.MoedaDTO;
 
 /**
  * @author leonardorm
@@ -17,8 +20,8 @@ public class TriggerController {
 	MoedasConsumer consumer;
 	
 	@GetMapping("/vai")
-	public void chamaAi() {
-		consumer.consume();
+	public List<MoedaDTO> chamaAi() {
+		return consumer.consume();
 	}
 	
 }
