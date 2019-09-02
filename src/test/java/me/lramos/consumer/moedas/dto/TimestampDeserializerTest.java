@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.Before;
@@ -23,14 +22,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class TimestampDeserializerTest {
 
-	ObjectMapper mapper;
-	TimestampDeserializer deserializer;
+	ObjectMapper objectMapper;
+	TimestampDeserializer timestampDeserializer;
 
 	@Before
 	public void setUp() {
 
-		mapper = new ObjectMapper();
-		deserializer = new TimestampDeserializer();
+		objectMapper = new ObjectMapper();
+		timestampDeserializer = new TimestampDeserializer();
 
 	}
 
@@ -48,11 +47,11 @@ public class TimestampDeserializerTest {
 		ByteArrayInputStream byteArrayInputStream = 
 				new ByteArrayInputStream("\"1567434698\"".getBytes(StandardCharsets.UTF_8));
 		
-		JsonParser jasonParser = mapper.getFactory().createParser(byteArrayInputStream);
+		JsonParser jasonParser = objectMapper.getFactory().createParser(byteArrayInputStream);
 		
-		DeserializationContext context = mapper.getDeserializationContext();
+		DeserializationContext context = objectMapper.getDeserializationContext();
 
-		String actual = deserializer.deserialize(jasonParser, context);
+		String actual = timestampDeserializer.deserialize(jasonParser, context);
 
 		assertEquals("2019-09-02 11:31:38", actual);
 	}
