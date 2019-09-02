@@ -52,10 +52,10 @@ public class MoedasConsumer extends AbstractConsumer {
 
 		moedas.forEach(m -> {
 
-			m.setCode(first.getCode());
-			m.setCodein(first.getCodein());
-			m.setName(first.getName());
-			m.setCreate_date(first.getCreate_date());
+			m.setCodigo(first.getCodigo());
+			m.setCodigoDestino(first.getCodigoDestino());
+			m.setNome(first.getNome());
+			m.setData(first.getData());
 			
 		});
 

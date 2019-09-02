@@ -1,6 +1,9 @@
 package me.lramos.consumer.moedas.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
+import me.lramos.consumer.moedas.consumers.MoedasConsumer;
 
 /**
  * Exemplo:
@@ -31,32 +34,46 @@ import lombok.Data;
  * 
  * </pre>
  * 
+ * <b>Observação:</b> A primeira moeda tem alguns dados que as demais não tem.
+ * Isso é tratado no {@link MoedasConsumer}.
+ * 
  * @author leonardorm
  *
  */
 @Data
 public class MoedaDTO {
-	
-	private String code;
 
-	private String codein;
+	@JsonProperty("code")
+	private String codigo;
 
-	private String name;
+	@JsonProperty("codein")
+	private String codigoDestino;
 
-	private String high;
+	@JsonProperty("name")
+	private String nome;
 
-	private String low;
+	@JsonProperty("high")
+	private String alta;
 
-	private String varBid;
+	@JsonProperty("low")
+	private String baixa;
 
-	private String pctChange;
+	@JsonProperty("varBid")
+	private String variacao;
 
-	private String bid;
+	@JsonProperty("pctChange")
+	private String porcentagemDeVariacao;
 
-	private String ask;
+	@JsonProperty("bid")
+	private String compra;
 
+	@JsonProperty("ask")
+	private String venda;
+
+	@JsonProperty("timestamp")
 	private String timestamp;
 
-	private String create_date;
-	
+	@JsonProperty("create_date")
+	private String data;
+
 }
