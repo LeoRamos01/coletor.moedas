@@ -2,21 +2,21 @@ package me.lramos.consumer.moedas;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
+import me.lramos.consumer.moedas.dto.MoedaDTO;
+
+/**
+ * @author leonardorm
+ *
+ */
 @Component
-public class MoedasConsumer {
+public class MoedasConsumer extends AbstractConsumer {
 
-	private static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL/";
-
-	@Autowired
-	RestTemplate restTemplate;
+	private static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL";
 
 	public void consume() {
 
@@ -25,16 +25,11 @@ public class MoedasConsumer {
 
 		final HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		List<Moeda> moedas = this.exchangeAsList(URL, new ParameterizedTypeReference<List<Moeda>>() {
+		List<MoedaDTO> moedas = this.exchangeAsList(URL, new ParameterizedTypeReference<List<MoedaDTO>>() {
 		}, entity);
 
-		System.out.println(moedas);
+		moedas.forEach(System.out::println);
 
-	}
-
-	public <T> List<T> exchangeAsList(String uri, ParameterizedTypeReference<List<T>> responseType,
-			HttpEntity<String> entity) {
-		return restTemplate.exchange(uri, HttpMethod.GET, entity, responseType).getBody();
 	}
 
 }
