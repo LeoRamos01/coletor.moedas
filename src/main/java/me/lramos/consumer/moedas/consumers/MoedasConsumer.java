@@ -1,7 +1,10 @@
 package me.lramos.consumer.moedas.consumers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,6 +21,12 @@ public class MoedasConsumer extends AbstractConsumer {
 
 	private static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL";
 
+	/**
+	 * 
+	 * Coleto as moedas numa unmodifiableList para evitar bugs. Trato-as a seguir no {@link #replicar(List)}.
+	 * 
+	 * @return
+	 */
 	public List<MoedaDTO> consume() {
 
 		final HttpHeaders headers = new HttpHeaders();
@@ -25,12 +34,13 @@ public class MoedasConsumer extends AbstractConsumer {
 
 		final HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		List<MoedaDTO> moedas = this.exchangeAsList(URL, new ParameterizedTypeReference<List<MoedaDTO>>() {
-		}, entity);
+		List<MoedaDTO> moedas = 
+				Collections
+					.unmodifiableList(
+						this.exchangeAsList(URL, new ParameterizedTypeReference<List<MoedaDTO>>() {
+						}, entity));
 
-		replicar(moedas);
-
-		return moedas;
+		return replicar(moedas);
 
 	}
 
@@ -42,23 +52,34 @@ public class MoedasConsumer extends AbstractConsumer {
 	 * <li>codein</li>
 	 * <li>name</li>
 	 * <li>create_date</li>
-	 * 
-	 * Para corrigir isso pego a primeira e copio para as demais.
+	 * <p>
+	 * Para corrigir isso pego tais valores da primeira e copio para as demais.
 	 * 
 	 * @param moedas
+	 * @return 
 	 */
-	private void replicar(List<MoedaDTO> moedas) {
+	private List<MoedaDTO> replicar(List<MoedaDTO> moedas) {
 		
-		MoedaDTO first = moedas.remove(0);
+		List<MoedaDTO> listaModificada = new ArrayList<>();
 
+		MoedaDTO first = moedas.get(0);
+		
 		moedas.forEach(m -> {
-
-			m.setCodigo(first.getCodigo());
-			m.setCodigoDestino(first.getCodigoDestino());
-			m.setNome(first.getNome());
-			m.setData(first.getData());
 			
+			MoedaDTO novaMoeda = new MoedaDTO();
+			
+			BeanUtils.copyProperties(m, novaMoeda);
+
+			novaMoeda.setCodigo(first.getCodigo());
+			novaMoeda.setCodigoDestino(first.getCodigoDestino());
+			novaMoeda.setNome(first.getNome());
+			novaMoeda.setData(first.getData());
+			
+			listaModificada.add(novaMoeda);
+
 		});
+		
+		return listaModificada;
 
 	}
 
