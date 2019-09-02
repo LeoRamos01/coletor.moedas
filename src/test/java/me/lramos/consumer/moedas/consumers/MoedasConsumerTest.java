@@ -2,6 +2,7 @@ package me.lramos.consumer.moedas.consumers;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,32 +50,32 @@ public class MoedasConsumerTest {
 		// Primeira: tudo preenchido
 		MoedaDTO first = new MoedaDTO();
 
-		first.setAlta("4.19");
-		first.setBaixa("4.12");
+		first.setAlta(new BigDecimal("4.19"));
+		first.setBaixa(new BigDecimal("4.12"));
 		first.setCodigo("USD");
 		first.setCodigoDestino("BRL");
-		first.setCompra("4.172");
+		first.setCompra(new BigDecimal("4.172"));
 		first.setData("2019-09-02 11:28:36");
 		first.setNome("Dólar");
-		first.setPorcentagemDeVariacao("0.05");
+		first.setPorcentagemDeVariacao(new BigDecimal("0.05"));
 		first.setTimestamp("2019-09-02 11:28:36");
-		first.setVariacao("0.01");
-		first.setVenda("4.181");
+		first.setVariacao(new BigDecimal("0.01"));
+		first.setVenda(new BigDecimal("4.181"));
 
 		// Da segunda em diante alguns campos vêm null:
 		MoedaDTO second = new MoedaDTO();
 
-		second.setAlta("4.19");
-		second.setBaixa("4.12");
+		second.setAlta(new BigDecimal("4.19"));
+		second.setBaixa(new BigDecimal("4.12"));
 		second.setCodigo(null);
 		second.setCodigoDestino(null);
-		second.setCompra("4.172");
+		second.setCompra(new BigDecimal("4.172"));
 		second.setData(null);
 		second.setNome(null);
-		second.setPorcentagemDeVariacao("0.05");
+		second.setPorcentagemDeVariacao(new BigDecimal("0.05"));
 		second.setTimestamp("2019-09-02 11:28:36");
-		second.setVariacao("0.01");
-		second.setVenda("4.181");
+		second.setVariacao(new BigDecimal("0.01"));
+		second.setVenda(new BigDecimal("4.181"));
 
 		ResponseEntity<List<MoedaDTO>> value = new ResponseEntity<List<MoedaDTO>>(Arrays.asList(first, second),
 				HttpStatus.OK);
@@ -89,31 +90,31 @@ public class MoedasConsumerTest {
 
 		MoedaDTO first = new MoedaDTO();
 
-		first.setAlta("4.19");
-		first.setBaixa("4.12");
+		first.setAlta(new BigDecimal("4.19"));
+		first.setBaixa(new BigDecimal("4.12"));
 		first.setCodigo("USD");
 		first.setCodigoDestino("BRL");
-		first.setCompra("4.172");
+		first.setCompra(new BigDecimal("4.172"));
 		first.setData("2019-09-02 11:28:36");
 		first.setNome("Dólar");
-		first.setPorcentagemDeVariacao("0.05");
+		first.setPorcentagemDeVariacao(new BigDecimal("0.05"));
 		first.setTimestamp("2019-09-02 11:28:36");
-		first.setVariacao("0.01");
-		first.setVenda("4.181");
+		first.setVariacao(new BigDecimal("0.01"));
+		first.setVenda(new BigDecimal("4.181"));
 
 		MoedaDTO second = new MoedaDTO();
 
-		second.setAlta("4.19");
-		second.setBaixa("4.12");
+		second.setAlta(new BigDecimal("4.19"));
+		second.setBaixa(new BigDecimal("4.12"));
 		second.setCodigo("USD");
 		second.setCodigoDestino("BRL");
-		second.setCompra("4.172");
+		second.setCompra(new BigDecimal("4.172"));
 		second.setData("2019-09-02 11:28:36");
 		second.setNome("Dólar");
-		second.setPorcentagemDeVariacao("0.05");
+		second.setPorcentagemDeVariacao(new BigDecimal("0.05"));
 		second.setTimestamp("2019-09-02 11:28:36");
-		second.setVariacao("0.01");
-		second.setVenda("4.181");
+		second.setVariacao(new BigDecimal("0.01"));
+		second.setVenda(new BigDecimal("4.181"));
 
 		List<MoedaDTO> expected = moedasConsumer.consume();
 

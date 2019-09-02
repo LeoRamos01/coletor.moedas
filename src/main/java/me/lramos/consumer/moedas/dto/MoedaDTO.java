@@ -1,5 +1,7 @@
 package me.lramos.consumer.moedas.dto;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -55,22 +57,22 @@ public class MoedaDTO {
 	private String nome;
 
 	@JsonProperty("high")
-	private String alta;
+	private BigDecimal alta;
 
 	@JsonProperty("low")
-	private String baixa;
+	private BigDecimal baixa;
 
 	@JsonProperty("varBid")
-	private String variacao;
+	private BigDecimal variacao;
 
 	@JsonProperty("pctChange")
-	private String porcentagemDeVariacao;
+	private BigDecimal porcentagemDeVariacao;
 
 	@JsonProperty("bid")
-	private String compra;
+	private BigDecimal compra;
 
 	@JsonProperty("ask")
-	private String venda;
+	private BigDecimal venda;
 
 	@JsonProperty("timestamp")
 	@JsonDeserialize(using = TimestampDeserializer.class)
