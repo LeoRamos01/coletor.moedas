@@ -31,6 +31,12 @@ public class TimestampDeserializer extends StdDeserializer<String> {
 		this(null);
 	}
 
+	/**
+	 * 
+	 * Construtor obrigatório ao dar extends.
+	 * 
+	 * @param clazz
+	 */
 	public TimestampDeserializer(Class<?> clazz) {
 		super(clazz);
 	}
@@ -42,16 +48,36 @@ public class TimestampDeserializer extends StdDeserializer<String> {
 		return getFormatted(convertSecondsToMillis(getTimestampAsString(jasonParser)));
 	}
 
-	private long convertSecondsToMillis(String timestamp) {
-		return Long.parseLong(timestamp) * 1000;
-	}
-
+	/**
+	 * 
+	 * Pega o valor do {@link JsonNode}.
+	 * 
+	 * @param jasonParser
+	 * @return
+	 * @throws IOException
+	 */
 	private String getTimestampAsString(JsonParser jasonParser) throws IOException {
 		JsonNode node = jasonParser.getCodec().readTree(jasonParser);
 		String timestamp = node.textValue();
 		return timestamp;
 	}
+	
+	/**
+	 * 
+	 * O timestamp não está em millis. Precisa multiplicar por mil.
+	 * 
+	 * @param timestamp
+	 * @return timestamp em millis
+	 */
+	private long convertSecondsToMillis(String timestamp) {
+		return Long.parseLong(timestamp) * 1000;
+	}
 
+	/**
+	 * 
+	 * @param timestampMillis
+	 * @return {@link LocalDateTime} no formato <b>yyyy-MM-dd HH:mm:ss</b>
+	 */
 	private String getFormatted(long timestampMillis) {
 		LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(timestampMillis),
 				TimeZone.getDefault().toZoneId());
