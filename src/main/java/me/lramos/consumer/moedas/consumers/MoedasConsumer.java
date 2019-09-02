@@ -48,6 +48,7 @@ public class MoedasConsumer extends AbstractConsumer {
 	 * @param moedas
 	 */
 	private void replicar(List<MoedaDTO> moedas) {
+		
 		MoedaDTO first = moedas.remove(0);
 
 		moedas.forEach(m -> {

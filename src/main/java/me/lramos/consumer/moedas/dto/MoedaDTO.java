@@ -1,6 +1,7 @@
 package me.lramos.consumer.moedas.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.Data;
 import me.lramos.consumer.moedas.consumers.MoedasConsumer;
@@ -41,6 +42,7 @@ import me.lramos.consumer.moedas.consumers.MoedasConsumer;
  *
  */
 @Data
+@JsonDeserialize(using = MoedaDeserializer.class)
 public class MoedaDTO {
 
 	@JsonProperty("code")
