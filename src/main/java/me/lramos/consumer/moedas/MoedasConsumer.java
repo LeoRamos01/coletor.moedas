@@ -1,45 +1,40 @@
 package me.lramos.consumer.moedas;
 
-import javax.annotation.PostConstruct;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class MoedasConsumer {
 
-	private static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL";
+	private static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL/";
+
 	@Autowired
 	RestTemplate restTemplate;
 
-	@PostConstruct
-	public void afterStartUp() {
-		consumer();
+	public void consume() {
+
+		final HttpHeaders headers = new HttpHeaders();
+		headers.set("User-Agent", "eltabo");
+
+		final HttpEntity<String> entity = new HttpEntity<String>(headers);
+
+		List<Moeda> moedas = this.exchangeAsList(URL, new ParameterizedTypeReference<List<Moeda>>() {
+		}, entity);
+
+		System.out.println(moedas);
+
 	}
 
-	public void consumer() {
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(URL);
-
-		HttpEntity<?> entity = new HttpEntity<>(headers);
-
-		HttpEntity<Moeda> response = restTemplate.exchange(
-		        builder.toUriString(), 
-		        HttpMethod.GET, 
-		        entity, 
-		        Moeda.class);
-		
-		System.out.println(response);
-		
+	public <T> List<T> exchangeAsList(String uri, ParameterizedTypeReference<List<T>> responseType,
+			HttpEntity<String> entity) {
+		return restTemplate.exchange(uri, HttpMethod.GET, entity, responseType).getBody();
 	}
 
 }
