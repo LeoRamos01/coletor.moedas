@@ -42,7 +42,7 @@ public class TimestampDeserializer extends StdDeserializer<String> {
 	}
 
 	@Override
-	public String deserialize(JsonParser jasonParser, DeserializationContext ctxt)
+	public String deserialize(JsonParser jasonParser, DeserializationContext context)
 			throws IOException, JsonProcessingException {
 
 		return getFormatted(convertSecondsToMillis(getTimestampAsString(jasonParser)));

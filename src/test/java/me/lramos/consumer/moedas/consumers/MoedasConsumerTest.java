@@ -37,7 +37,7 @@ public class MoedasConsumerTest {
 	RestTemplate restTemplate;
 
 	@Before
-	public void before() {
+	public void setUp() {
 
 		final HttpHeaders headers = new HttpHeaders();
 		headers.set("User-Agent", "eltabo");
