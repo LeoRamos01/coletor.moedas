@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.Data;
 import me.lramos.consumer.moedas.consumers.MoedasConsumer;
+import me.lramos.consumer.moedas.json.TimestampDeserializer;
 
 /**
  * Exemplo:

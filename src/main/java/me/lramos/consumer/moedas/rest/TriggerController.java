@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.controller;
+package me.lramos.consumer.moedas.rest;
 
 import java.util.List;
 

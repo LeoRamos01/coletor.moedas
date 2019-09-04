@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.dto;
+package me.lramos.consumer.moedas.json;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -11,6 +11,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+
+import me.lramos.consumer.moedas.dto.MoedaDTO;
 
 /**
  * 
