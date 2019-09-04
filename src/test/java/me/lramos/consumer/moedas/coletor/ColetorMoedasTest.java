@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.consumers;
+package me.lramos.consumer.moedas.coletor;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,19 +20,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import me.lramos.consumer.moedas.coletor.ColetorMoedas;
 import me.lramos.consumer.moedas.dto.MoedaDTO;
 
 /**
  * 
- * Teste para {@link MoedasConsumer}.
+ * Teste para {@link ColetorMoedas}.
  * 
  * @author leonardo
  *
  */
-public class MoedasConsumerTest {
+public class ColetorMoedasTest {
 
 	@InjectMocks
-	MoedasConsumer moedasConsumer;
+	ColetorMoedas coletorMoedas;
 
 	@Mock
 	RestTemplate restTemplate;
@@ -80,7 +81,7 @@ public class MoedasConsumerTest {
 		ResponseEntity<List<MoedaDTO>> value = new ResponseEntity<List<MoedaDTO>>(Arrays.asList(first, second),
 				HttpStatus.OK);
 
-		Mockito.when(restTemplate.exchange(MoedasConsumer.URL, HttpMethod.GET, entity,
+		Mockito.when(restTemplate.exchange(ColetorMoedas.URL, HttpMethod.GET, entity,
 				new ParameterizedTypeReference<List<MoedaDTO>>() {
 				})).thenReturn(value);
 	}
@@ -116,7 +117,7 @@ public class MoedasConsumerTest {
 		second.setVariacao(new BigDecimal("0.01"));
 		second.setVenda(new BigDecimal("4.181"));
 
-		List<MoedaDTO> expected = moedasConsumer.consume();
+		List<MoedaDTO> expected = coletorMoedas.coletar();
 
 		assertEquals(expected, Arrays.asList(first, second));
 	}

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.Data;
-import me.lramos.consumer.moedas.consumers.MoedasConsumer;
+import me.lramos.consumer.moedas.coletor.ColetorMoedas;
 import me.lramos.consumer.moedas.json.TimestampDeserializer;
 
 /**
@@ -40,7 +40,7 @@ import me.lramos.consumer.moedas.json.TimestampDeserializer;
  * </pre>
  * 
  * <b>Observação:</b> A primeira moeda tem alguns dados que as demais não tem.
- * Isso é tratado no {@link MoedasConsumer}.
+ * Isso é tratado no {@link ColetorMoedas}.
  * 
  * @author leonardorm
  *

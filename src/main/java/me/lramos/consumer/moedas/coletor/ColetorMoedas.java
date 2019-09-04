@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.consumers;
+package me.lramos.consumer.moedas.coletor;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +17,7 @@ import me.lramos.consumer.moedas.dto.MoedaDTO;
  *
  */
 @Component
-public class MoedasConsumer extends AbstractConsumer {
+public class ColetorMoedas extends AbstractConsumer {
 
 	static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL";
 
@@ -28,7 +28,7 @@ public class MoedasConsumer extends AbstractConsumer {
 	 * 
 	 * @return
 	 */
-	public List<MoedaDTO> consume() {
+	public List<MoedaDTO> coletar() {
 
 		final HttpHeaders headers = new HttpHeaders();
 		headers.set("User-Agent", "eltabo");
