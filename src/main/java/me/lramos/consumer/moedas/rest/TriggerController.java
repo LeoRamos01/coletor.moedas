@@ -10,6 +10,9 @@ import me.lramos.consumer.moedas.MoedasService;
 import me.lramos.consumer.moedas.dto.MoedaDTO;
 
 /**
+ * 
+ * Serve apenas para chamar o coletor.
+ * 
  * @author leonardorm
  *
  */
