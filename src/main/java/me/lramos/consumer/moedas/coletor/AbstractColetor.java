@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  * @author leonardorm
  *
  */
-public class AbstractConsumer {
+public class AbstractColetor {
 	
 	@Autowired
 	RestTemplate restTemplate;

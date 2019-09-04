@@ -17,7 +17,7 @@ import me.lramos.consumer.moedas.dto.MoedaDTO;
  *
  */
 @Component
-public class ColetorMoedas extends AbstractConsumer {
+public class ColetorMoedas extends AbstractColetor {
 
 	static final String URL = "https://economia.awesomeapi.com.br/json/list/USD-BRL";
 

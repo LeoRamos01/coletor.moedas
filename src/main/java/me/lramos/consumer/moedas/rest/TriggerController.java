@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.lramos.consumer.moedas.coletor.ColetorMoedas;
+import me.lramos.consumer.moedas.MoedasService;
 import me.lramos.consumer.moedas.dto.MoedaDTO;
 
 /**
@@ -17,11 +17,11 @@ import me.lramos.consumer.moedas.dto.MoedaDTO;
 public class TriggerController {
 
 	@Autowired
-	ColetorMoedas coletorMoedas;
+	MoedasService service;
 	
 	@GetMapping("/vai")
 	public List<MoedaDTO> chamaAi() {
-		return coletorMoedas.coletar();
+		return service.getMoedas();
 	}
 	
 }
