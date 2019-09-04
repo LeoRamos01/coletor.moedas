@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.kafka;
+package me.lramos.coletor.moedas.kafka;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import me.lramos.consumer.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.dto.MoedaDTO;
 
 /**
  * @author leonardo

@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.coletor;
+package me.lramos.coletor.moedas.coletor;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
-import me.lramos.consumer.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.dto.MoedaDTO;
 
 /**
  * @author leonardorm

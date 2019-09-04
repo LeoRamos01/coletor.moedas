@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas;
+package me.lramos.coletor.moedas;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

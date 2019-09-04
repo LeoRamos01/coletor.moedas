@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.json;
+package me.lramos.coletor.moedas.json;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-import me.lramos.consumer.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.dto.MoedaDTO;
 
 /**
  * 

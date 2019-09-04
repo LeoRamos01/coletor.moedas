@@ -1,13 +1,13 @@
-package me.lramos.consumer.moedas;
+package me.lramos.coletor.moedas.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.lramos.consumer.moedas.coletor.ColetorMoedas;
-import me.lramos.consumer.moedas.dto.MoedaDTO;
-import me.lramos.consumer.moedas.kafka.MoedaKafkaProducer;
+import me.lramos.coletor.moedas.coletor.ColetorMoedas;
+import me.lramos.coletor.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.kafka.MoedaKafkaProducer;
 
 /**
  * @author leonardo

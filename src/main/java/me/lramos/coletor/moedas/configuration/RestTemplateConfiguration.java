@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.configuration;
+package me.lramos.coletor.moedas.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

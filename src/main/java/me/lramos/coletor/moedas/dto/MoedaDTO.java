@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.dto;
+package me.lramos.coletor.moedas.dto;
 
 import java.math.BigDecimal;
 
@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import me.lramos.consumer.moedas.coletor.ColetorMoedas;
-import me.lramos.consumer.moedas.json.TimestampDeserializer;
+import me.lramos.coletor.moedas.coletor.ColetorMoedas;
+import me.lramos.coletor.moedas.json.TimestampDeserializer;
 
 /**
  * Exemplo:

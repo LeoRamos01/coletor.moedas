@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.coletor;
+package me.lramos.coletor.moedas.coletor;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,8 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import me.lramos.consumer.moedas.coletor.ColetorMoedas;
-import me.lramos.consumer.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.coletor.ColetorMoedas;
+import me.lramos.coletor.moedas.dto.MoedaDTO;
 
 /**
  * 

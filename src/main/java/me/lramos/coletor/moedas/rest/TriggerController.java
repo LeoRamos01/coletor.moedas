@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.rest;
+package me.lramos.coletor.moedas.rest;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.lramos.consumer.moedas.MoedasService;
-import me.lramos.consumer.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.dto.MoedaDTO;
+import me.lramos.coletor.moedas.service.MoedasService;
 
 /**
  * 

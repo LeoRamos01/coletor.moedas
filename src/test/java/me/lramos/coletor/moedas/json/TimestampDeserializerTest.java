@@ -1,4 +1,4 @@
-package me.lramos.consumer.moedas.json;
+package me.lramos.coletor.moedas.json;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import me.lramos.consumer.moedas.json.TimestampDeserializer;
+import me.lramos.coletor.moedas.json.TimestampDeserializer;
 
 /**
  * Teste para {@link TimestampDeserializer}.
